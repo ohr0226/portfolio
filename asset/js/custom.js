@@ -1,4 +1,20 @@
 $(function(){
+
+    function onResizeHandler() {
+        const winH = window.innerHeight;
+        $('.project-wrap').each(function(){
+            $(this).css('height', winH + 'px');
+        });
+    }
+
+    // 최초 실행
+    onResizeHandler();
+
+    // resize 시에도 실행
+    $(window).on('resize', function(){
+        onResizeHandler();
+    });
+    
     ScrollTrigger.matchMedia({
         // large
         "(min-width: 1024px)": function() {
