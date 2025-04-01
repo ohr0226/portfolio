@@ -69,13 +69,18 @@
 
 .sc-project {
     .project-wrap {
+
         .links {
-            margin: 24px 0;
+            margin: 15px 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             font-size: 18px;
             font-family: $font-en2;
             a {
                 display: inline-block;
                 padding: 10px 20px;
+                margin: 5px;
                 border: 1px solid #000;
                 border-radius: 30px;
                 transition: all 0.5s;
@@ -129,6 +134,69 @@
             &:hover {
                 background-color: #fff;
                 color: #00d465;
+            }
+        }
+    }
+    .wrap8 {
+        a[data-hover] {
+            border: 1px solid #000;
+            &:hover {
+                background-color: #000;
+                color: #fff;
+            }
+        }
+    }
+    .wrap9 {
+        a[data-hover] {
+            border: 1px solid #fff;
+            &:hover {
+                background-color: #fff;
+                color: #ff5f00;
+            }
+        }
+    }
+    .wrap10 {
+        a[data-hover] {
+            border: 1px solid #222;
+            &:hover {
+                background-color: #222;
+                color: #222;
+            }
+        }
+    }
+    .wrap11 {
+        a[data-hover] {
+            border: 1px solid #fff;
+            &:hover {
+                background-color: #fff;
+                color: #000;
+            }
+        }
+    }
+    .wrap12 {
+        a[data-hover] {
+            border: 1px solid #000;
+            &:hover {
+                background-color: #000;
+                color: #fff;
+            }
+        }
+    }
+    .wrap13 {
+        a[data-hover] {
+            border: 1px solid #393939;
+            &:hover {
+                background-color: #393939;
+                color: #fff;
+            }
+        }
+    }
+    .wrap14 {
+        a[data-hover] {
+            border: 1px solid #fff;
+            &:hover {
+                background-color: #fff;
+                color: #003595;
             }
         }
     }
