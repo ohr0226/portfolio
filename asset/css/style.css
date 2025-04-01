@@ -619,6 +619,41 @@ a[data-img].active {
     border: 1px solid #fff;
     color: #fff;
   }
+  .sc-project .wrap8 a[data-hover]:hover {
+    background-color: transparent;
+    border: 1px solid #000;
+    color: #000;
+  }
+  .sc-project .wrap9 a[data-hover]:hover {
+    background-color: transparent;
+    border: 1px solid #fff;
+    color: #fff;
+  }
+  .sc-project .wrap10 a[data-hover]:hover {
+    background-color: transparent;
+    border: 1px solid #000;
+    color: #000;
+  }
+  .sc-project .wrap11 a[data-hover]:hover {
+    background-color: transparent;
+    border: 1px solid #fff;
+    color: #fff;
+  }
+  .sc-project .wrap12 a[data-hover]:hover {
+    background-color: transparent;
+    border: 1px solid #000;
+    color: #000;
+  }
+  .sc-project .wrap13 a[data-hover]:hover {
+    background-color: transparent;
+    border: 1px solid #393939;
+    color: #393939;
+  }
+  .sc-project .wrap14 a[data-hover]:hover {
+    background-color: transparent;
+    border: 1px solid #fff;
+    color: #fff;
+  }
 }
 .sc-contact .link-mail {
   display: block;
