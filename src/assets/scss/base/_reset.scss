@@ -15,6 +15,9 @@ ul,ol{
 html{
     scroll-behavior: smooth;
     overflow-x: hidden;
+    background-color: #000;
+    // 모바일에서 끝까지 밀었을 때 튕기는(바운스) 효과로 흰 영역이 보이지 않도록
+    overscroll-behavior-y: none;
 }
 body {
     width: 100%;
