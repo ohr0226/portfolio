@@ -94,17 +94,28 @@ function numTrigger(opts: { start: string; introY: string; goalY: string; goalDe
   });
 }
 
-/** 섹션(data-color)에 진입하면 배경색 클래스를 토글 (CSS transition 1s) */
-function bgToggle() {
-  $$('[data-color]').forEach((el) => {
-    const color = el.dataset.color === '#fff' ? 'white' : 'black';
-    ScrollTrigger.create({
-      trigger: el,
-      start: 'top 40%',
-      end: 'bottom top',
-      toggleClass: { targets: '.background', className: color },
-    });
-  });
+/**
+ * 배경색 전환 기준 요소
+ * 섹션 안에 [data-color-start] 가 있으면 그 지점부터 색을 바꿈 (예: intro 는 상단 흰 텍스트 영역을 지난 뒤)
+ */
+const colorStart = (el: HTMLElement) => el.querySelector<HTMLElement>('[data-color-start]') ?? el;
+
+/**
+ * 기준선(start, 뷰포트 상단 기준 비율)을 지난 마지막 섹션의 색으로 배경 클래스를 교체 (CSS transition 1s)
+ * 스크롤할 때마다 현재 위치로 직접 계산 → 새로고침/빠른 스크롤에도 항상 한 가지 색만 적용
+ */
+function bgToggle(line: number) {
+  const background = $('.background');
+  const sections = $$('[data-color]');
+  const update = () => {
+    const y = window.innerHeight * line;
+    const current = sections.filter((el) => colorStart(el).getBoundingClientRect().top <= y).pop() ?? sections[0];
+    const isWhite = current?.dataset.color === '#fff';
+    background?.classList.toggle('white', isWhite);
+    background?.classList.toggle('black', !isWhite);
+  };
+  update();
+  ScrollTrigger.create({ start: 0, end: 'max', onUpdate: update, onRefresh: update });
 }
 
 /** 배경색을 스크롤 진행도에 맞춰 서서히 전환 (모바일: 빠른 스크롤에도 급하게 바뀌지 않도록) */
@@ -120,13 +131,24 @@ function bgScrub(opts: { start: string; end: string }) {
         backgroundColor: el.dataset.color,
         ease: 'none',
         immediateRender: false,
-        scrollTrigger: { trigger: el, start: opts.start, end: opts.end, scrub: true },
+        scrollTrigger: { trigger: colorStart(el), start: opts.start, end: opts.end, scrub: true },
       },
     );
   });
 }
 
+/** 로딩 글자 목록을 마지막 글자가 보이는 위치까지 올리는 y 값 */
+const lastItemY = (_: number, list: HTMLElement) => -((list.lastElementChild as HTMLElement | null)?.offsetTop ?? 0);
+
 const runCleanups = (cleanups: Cleanup[]) => () => cleanups.forEach((fn) => fn());
+
+/** 사용하는 웹폰트를 명시적으로 로드 (화면에 아직 없는 폰트도 미리 받아둠), 느린 네트워크 대비 최대 3초 대기 */
+const FONTS = ['400 1em Zephyr', '500 1em Pretendard', '300 1em Pretendard', '500 1em Fahkwang', '300 1em Gilroy'];
+const loadFonts = () =>
+  Promise.race([
+    Promise.all(FONTS.map((font) => document.fonts.load(font).catch(() => []))),
+    new Promise((resolve) => setTimeout(resolve, 3000)),
+  ]).then(() => undefined);
 
 export function usePortfolioAnimation() {
   useGSAP(() => {
@@ -135,6 +157,7 @@ export function usePortfolioAnimation() {
      * → 이미지/폰트 로드가 끝나면 트리거 위치를 다시 계산
      */
     let disposed = false;
+    const fontsLoaded = loadFonts();
     const imagesLoaded = $$<HTMLImageElement>('img')
       .filter((img) => !img.complete)
       .map(
@@ -144,7 +167,7 @@ export function usePortfolioAnimation() {
             img.addEventListener('error', resolve, { once: true });
           }),
       );
-    Promise.all([...imagesLoaded, document.fonts.ready]).then(() => {
+    Promise.all([...imagesLoaded, fontsLoaded]).then(() => {
       if (!disposed) ScrollTrigger.refresh();
     });
 
@@ -204,7 +227,7 @@ export function usePortfolioAnimation() {
       /**
        * background color change
        */
-      bgToggle();
+      bgToggle(0.6);
 
       /**
        * round cursor event
@@ -243,7 +266,7 @@ export function usePortfolioAnimation() {
       /**
        * background color change
        */
-      bgToggle();
+      bgToggle(0.6);
 
       return runCleanups(cleanups);
     });
@@ -309,13 +332,21 @@ export function usePortfolioAnimation() {
       /**
        *  loading ani
        */
-      gsap
-        .timeline({ onComplete: () => void introAni.play() })
+      const loadingAni = gsap
+        .timeline({ paused: true, onComplete: () => void introAni.play() })
         .addLabel('a')
-        .to('.loading .list1', { y: '-280vw', duration: 4 }, 'a')
-        .to('.loading .list2', { y: '-140vw', duration: 5 }, 'a')
-        .to('.loading .list3', { y: '-340vw', duration: 3 }, 'a')
+        // 마지막 글자(O/H/R)의 실제 위치만큼 이동 → 브라우저(Safari)별 줄 높이 반올림 차이에도 정렬 유지
+        .to('.loading .list1', { y: lastItemY, duration: 4 }, 'a')
+        .to('.loading .list2', { y: lastItemY, duration: 5 }, 'a')
+        .to('.loading .list3', { y: lastItemY, duration: 3 }, 'a')
         .to('.loading', { yPercent: -100, display: 'none' }, 'a+=5');
+
+      // 폰트가 모두 준비된 뒤 로딩 애니메이션 시작 (그 전엔 대체 폰트가 보이지 않도록 숨김)
+      gsap.set('.loading .num-wrap', { autoAlpha: 0 });
+      fontsLoaded.then(() => {
+        gsap.set('.loading .num-wrap', { autoAlpha: 1 });
+        loadingAni.play();
+      });
 
       /**
        * Trigger event
@@ -330,7 +361,13 @@ export function usePortfolioAnimation() {
 
       $$('[data-fade]').forEach((el) => {
         gsap.from(el, {
-          scrollTrigger: { trigger: el, start: 'top 120%', end: 'bottom top', scrub: 1 },
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 120%',
+            // PC: 화면을 다 지나갈 때까지 흐리면 너무 늦어서, 화면 60% 지점에 오면 선명해지도록
+            end: () => (window.matchMedia('(min-width: 1024px)').matches ? 'top 60%' : 'bottom top'),
+            scrub: 1,
+          },
           yPercent: 15,
           opacity: 0,
           duration: 0.3,

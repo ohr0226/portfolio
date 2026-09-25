@@ -27,7 +27,7 @@ body {
     font-family: $font-kn1;
     line-height: 1.25em;
     color: #fff;
-    background-color: #000;
+    // body 에 배경색을 주면 z-index:-1 인 .background 를 덮어 배경 전환이 보이지 않음 (html 배경으로 대체)
     word-wrap: break-word;
     word-break: break-all;
     -webkit-font-smoothing: antialiased;

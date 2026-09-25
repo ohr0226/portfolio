@@ -16,12 +16,19 @@
     transition: opacity 0.4s;
     .logo-area {
         svg {
+            // Safari 에서 viewBox 경계에 걸친 path(R 꼬리)가 잘리지 않도록
+            width: 100%;
+            height: auto;
+            overflow: visible;
             fill: #fff;
         }
     }
     .logo {
         display: block;
         width: 85px;
+        .link-logo {
+            display: block;
+        }
     }
     &.active {
         opacity: 0;

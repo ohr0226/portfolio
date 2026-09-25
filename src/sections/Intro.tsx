@@ -28,7 +28,7 @@ export default function Intro() {
         </div>
       </div>
       <div className="point-area">
-        <div className="column-left">
+        <div className="column-left" data-color-start>
           <figure className="thumb-box">
             <video
               width={1080}

@@ -5,7 +5,7 @@ export default function Header() {
         <h1 className="logo" data-hover>
           <a href="#" className="link-logo">
             <span className="blind">Oh hyerim Portfolio</span>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 819.1 298.4">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="-2 -2 824 302.4" width="85" height="31">
               <g>
                 <path d="M295.9,149.4c0,85.8-71.1,149-149.8,149S0,235.2,0,149.4C0,61.9,69.9,0,148.6,0S295.9,63.2,295.9,149.4z M258.7,149.4
                   c0-86.2-40.2-145.2-108.4-145.2c-68.6,0-112.6,59-112.6,145.2c0,85.8,38.5,144.8,106.7,144.8C212.6,294.2,258.7,235.2,258.7,149.4z
