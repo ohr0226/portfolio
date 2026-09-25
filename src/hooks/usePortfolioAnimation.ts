@@ -131,7 +131,7 @@ function bgScrub(opts: { start: string; end: string }) {
         backgroundColor: el.dataset.color,
         ease: 'none',
         immediateRender: false,
-        scrollTrigger: { trigger: colorStart(el), start: opts.start, end: opts.end, scrub: true },
+        scrollTrigger: { trigger: colorStart(el), start: opts.start, end: opts.end, scrub: 1 },
       },
     );
   });
@@ -286,7 +286,7 @@ export function usePortfolioAnimation() {
       /**
        * background color change
        */
-      bgScrub({ start: 'top 75%', end: 'top 15%' });
+      bgScrub({ start: 'top 90%', end: 'top 10%' });
 
       return offHeader;
     });
@@ -364,8 +364,8 @@ export function usePortfolioAnimation() {
           scrollTrigger: {
             trigger: el,
             start: 'top 120%',
-            // PC: 화면을 다 지나갈 때까지 흐리면 너무 늦어서, 화면 60% 지점에 오면 선명해지도록
-            end: () => (window.matchMedia('(min-width: 1024px)').matches ? 'top 60%' : 'bottom top'),
+            // 화면을 다 지나갈 때까지 흐리면 너무 늦어서, 화면 60% 지점에 오면 선명해지도록
+            end: 'top 60%',
             scrub: 1,
           },
           yPercent: 15,
