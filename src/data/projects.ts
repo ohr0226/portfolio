@@ -161,7 +161,7 @@ export const projects: Project[] = [
     id: 'kia_worldwide',
     category: 'work',
     title: 'KIA WorldWide',
-    desc: ['웹사이트 리뉴얼 및 Three.js,gsap를 활용한 <br/>인터렉션 적용', ],
+    desc: ['웹사이트 리뉴얼 및 Three.js, GSAP를 <br/>활용한 인터렉션 적용', '콘텐츠 페이지 프론트엔드 PL <br/>작업 일정 수립 및 관리'],
     thumb: { src: kiaLogo, alt: '기아 로고', href: 'https://worldwide.kia.com/ko' },
     links: [page('https://worldwide.kia.com/ko')],
     skills: ['Three.js','SCSS', 'React', 'vite'],
