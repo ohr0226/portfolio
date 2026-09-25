@@ -94,6 +94,38 @@ function numTrigger(opts: { start: string; introY: string; goalY: string; goalDe
   });
 }
 
+/** 섹션(data-color)에 진입하면 배경색 클래스를 토글 (CSS transition 1s) */
+function bgToggle() {
+  $$('[data-color]').forEach((el) => {
+    const color = el.dataset.color === '#fff' ? 'white' : 'black';
+    ScrollTrigger.create({
+      trigger: el,
+      start: 'top 40%',
+      end: 'bottom top',
+      toggleClass: { targets: '.background', className: color },
+    });
+  });
+}
+
+/** 배경색을 스크롤 진행도에 맞춰 서서히 전환 (모바일: 빠른 스크롤에도 급하게 바뀌지 않도록) */
+function bgScrub(opts: { start: string; end: string }) {
+  gsap.set('.background', { transition: 'none' });
+  const sections = $$('[data-color]');
+  sections.forEach((el, i) => {
+    if (i === 0) return;
+    gsap.fromTo(
+      '.background',
+      { backgroundColor: sections[i - 1].dataset.color },
+      {
+        backgroundColor: el.dataset.color,
+        ease: 'none',
+        immediateRender: false,
+        scrollTrigger: { trigger: el, start: opts.start, end: opts.end, scrub: true },
+      },
+    );
+  });
+}
+
 const runCleanups = (cleanups: Cleanup[]) => () => cleanups.forEach((fn) => fn());
 
 export function usePortfolioAnimation() {
@@ -170,6 +202,11 @@ export function usePortfolioAnimation() {
       numTrigger({ start: 'top 50%', introY: '-280px', goalY: '-560px' });
 
       /**
+       * background color change
+       */
+      bgToggle();
+
+      /**
        * round cursor event
        */
       cleanups.push(...magnetic('.sc-contact .sub-tit', '.sc-contact .link-mail'));
@@ -203,6 +240,11 @@ export function usePortfolioAnimation() {
        */
       numTrigger({ start: 'top 50%', introY: '-200px', goalY: '-400px' });
 
+      /**
+       * background color change
+       */
+      bgToggle();
+
       return runCleanups(cleanups);
     });
 
@@ -217,6 +259,11 @@ export function usePortfolioAnimation() {
        * number trigger
        */
       numTrigger({ start: 'top 80%', introY: '-200px', goalY: '-400px', goalDelay: 0.6 });
+
+      /**
+       * background color change
+       */
+      bgScrub({ start: 'top 75%', end: 'top 15%' });
 
       return offHeader;
     });
@@ -296,19 +343,6 @@ export function usePortfolioAnimation() {
       gsap.from('.sc-intro .point-area video', {
         scrollTrigger: { trigger: '.point-area', start: 'top bottom', end: 'bottom top', scrub: 1 },
         scale: 1.4,
-      });
-
-      /**
-       * background color change
-       */
-      $$('[data-color]').forEach((el) => {
-        const color = el.dataset.color === '#fff' ? 'white' : 'black';
-        ScrollTrigger.create({
-          trigger: el,
-          start: 'top 40%',
-          end: 'bottom top',
-          toggleClass: { targets: '.background', className: color },
-        });
       });
     });
 
