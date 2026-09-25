@@ -1,5 +1,7 @@
 import NumCounter from '../components/NumCounter';
-import introGif from '../assets/images/ohr-gif.gif';
+import introMp4 from '../assets/images/ohr-intro.mp4';
+import introWebm from '../assets/images/ohr-intro.webm';
+import introPoster from '../assets/images/ohr-intro-poster.jpg';
 
 export default function Intro() {
   return (
@@ -28,7 +30,19 @@ export default function Intro() {
       <div className="point-area">
         <div className="column-left">
           <figure className="thumb-box">
-            <img src={introGif} alt="오혜림 소개" />
+            <video
+              width={1080}
+              height={1588}
+              poster={introPoster}
+              autoPlay
+              muted
+              loop
+              playsInline
+              aria-label="오혜림 소개"
+            >
+              <source src={introWebm} type="video/webm" />
+              <source src={introMp4} type="video/mp4" />
+            </video>
           </figure>
         </div>
         <div className="column-right" data-fade>

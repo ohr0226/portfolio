@@ -156,8 +156,9 @@
                 width: 100%;
                 overflow: hidden;
             }
-            img {
-                object-fit: contain;
+            video {
+                width: 100%;
+                height: auto;
             }
         }
         .column-right {

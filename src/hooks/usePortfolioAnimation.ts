@@ -293,7 +293,7 @@ export function usePortfolioAnimation() {
       /**
        * img trigger
        */
-      gsap.from('.sc-intro .point-area img', {
+      gsap.from('.sc-intro .point-area video', {
         scrollTrigger: { trigger: '.point-area', start: 'top bottom', end: 'bottom top', scrub: 1 },
         scale: 1.4,
       });
