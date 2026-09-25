@@ -12,7 +12,7 @@ const $$ = <T extends HTMLElement = HTMLElement>(selector: string) =>
 
 /** addEventListener 후 해제 함수를 반환 */
 function on<K extends keyof HTMLElementEventMap>(
-  target: HTMLElement | Window | null,
+  target: HTMLElement | Window | Document | null,
   type: K,
   handler: (e: HTMLElementEventMap[K]) => void,
 ): Cleanup {
@@ -28,6 +28,24 @@ function hover(target: HTMLElement, enter: () => void, leave: () => void): Clean
   return () => {
     offEnter();
     offLeave();
+  };
+}
+
+/**
+ * [data-hover] 등 hover 대상에 mouseenter/mouseleave 를 이벤트 위임으로 처리
+ * → 탭 전환 등으로 나중에 렌더링된 요소에도 동작
+ */
+function delegateHover(selector: string, enter: (el: HTMLElement) => void, leave: (el: HTMLElement) => void): Cleanup {
+  const handle = (e: MouseEvent, fn: (el: HTMLElement) => void) => {
+    const el = (e.target as Element).closest<HTMLElement>(selector);
+    // 같은 요소 내부(자식 간) 이동은 무시
+    if (el && !el.contains(e.relatedTarget as Node | null)) fn(el);
+  };
+  const offOver = on(document, 'mouseover', (e) => handle(e, enter));
+  const offOut = on(document, 'mouseout', (e) => handle(e, leave));
+  return () => {
+    offOver();
+    offOut();
   };
 }
 
@@ -81,17 +99,6 @@ const runCleanups = (cleanups: Cleanup[]) => () => cleanups.forEach((fn) => fn()
 export function usePortfolioAnimation() {
   useGSAP(() => {
     /**
-     * project-wrap 높이를 뷰포트 높이에 맞춤
-     */
-    const onResize = () => {
-      $$('.project-wrap').forEach((el) => {
-        el.style.height = `${window.innerHeight}px`;
-      });
-    };
-    onResize();
-    const offResize = on(window, 'resize', onResize);
-
-    /**
      * React 는 window load 이후에 마운트될 수 있어 ScrollTrigger 의 자동 refresh 가 누락됨
      * → 이미지/폰트 로드가 끝나면 트리거 위치를 다시 계산
      */
@@ -131,21 +138,19 @@ export function usePortfolioAnimation() {
       );
 
       const cursorHover = (selector: string, cursorClass: string) => {
-        $$(selector).forEach((el) => {
-          cleanups.push(
-            hover(
-              el,
-              () => {
-                cursor?.classList.add(cursorClass);
-                el.classList.add('active');
-              },
-              () => {
-                cursor?.classList.remove(cursorClass);
-                el.classList.remove('active');
-              },
-            ),
-          );
-        });
+        cleanups.push(
+          delegateHover(
+            selector,
+            (el) => {
+              cursor?.classList.add(cursorClass);
+              el.classList.add('active');
+            },
+            (el) => {
+              cursor?.classList.remove(cursorClass);
+              el.classList.remove('active');
+            },
+          ),
+        );
       };
       cursorHover('[data-hover]', 'cursor-over');
       cursorHover('[data-img]', 'img-over');
@@ -294,18 +299,6 @@ export function usePortfolioAnimation() {
       });
 
       /**
-       *  project-area dim
-       */
-      $$('.project-wrap').forEach((el) => {
-        const shadow = el.querySelector('.bg-shadow');
-        if (!shadow) return;
-        gsap.to(shadow, {
-          scrollTrigger: { trigger: el, start: 'top top', end: 'bottom top', scrub: 1 },
-          opacity: 1,
-        });
-      });
-
-      /**
        * background color change
        */
       $$('[data-color]').forEach((el) => {
@@ -321,7 +314,6 @@ export function usePortfolioAnimation() {
 
     return () => {
       disposed = true;
-      offResize();
       mm.revert();
     };
   });

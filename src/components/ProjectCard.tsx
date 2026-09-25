@@ -1,4 +1,5 @@
 import { Fragment } from 'react';
+import parse from 'html-react-parser';
 import type { Project } from '../data/projects';
 
 interface Props {
@@ -8,11 +9,11 @@ interface Props {
 }
 
 export default function ProjectCard({ project, index, total }: Props) {
-  const { title, desc, thumb, links, skills, shadow } = project;
+  const { id, title, desc, thumb, links, skills, shadow } = project;
   const descLines = Array.isArray(desc) ? desc : [desc];
 
   return (
-    <div className={`project-wrap wrap${index}`}>
+    <div className={`project-wrap wrap-${id}`}>
       {shadow && <div className="bg-shadow"></div>}
       <div className="column-left">
         <a href={thumb.href} className="thumb-box" target="_blank" data-img>
@@ -31,7 +32,7 @@ export default function ProjectCard({ project, index, total }: Props) {
             {descLines.map((line, i) => (
               <Fragment key={i}>
                 {i > 0 && <br />}
-                {line}
+                {parse(line)}
               </Fragment>
             ))}
           </p>

@@ -93,25 +93,7 @@
             }
         }
     }
-    .wrap1 {
-        a[data-hover] {
-            border: 1px solid #fff;
-            &:hover {
-                background-color: #fff;
-                color: #36ac36;
-            }
-        }
-    }
-    .wrap3 {
-        a[data-hover] {
-            border: 1px solid #fff;
-            &:hover {
-                background-color: #fff;
-                color: #ff6f62;
-            }
-        }
-    }
-    .wrap5 {
+    .wrap-dalkomm {
         a[data-hover] {
             &:hover {
                 background-color: #fff;
@@ -119,7 +101,7 @@
             }
         }
     }
-    .wrap6 {
+    .wrap-baemin {
         a[data-hover] {
             border: 1px solid #fff;
             &:hover {
@@ -128,16 +110,7 @@
             }
         }
     }
-    .wrap7 {
-        a[data-hover] {
-            border: 1px solid #fff;
-            &:hover {
-                background-color: #fff;
-                color: #00d465;
-            }
-        }
-    }
-    .wrap8 {
+    .wrap-design-samsung {
         a[data-hover] {
             border: 1px solid #000;
             &:hover {
@@ -146,7 +119,7 @@
             }
         }
     }
-    .wrap9 {
+    .wrap-devsisters {
         a[data-hover] {
             border: 1px solid #fff;
             &:hover {
@@ -155,7 +128,7 @@
             }
         }
     }
-    .wrap10 {
+    .wrap-toyota {
         a[data-hover] {
             border: 1px solid #222;
             &:hover {
@@ -164,7 +137,7 @@
             }
         }
     }
-    .wrap11 {
+    .wrap-tmap {
         a[data-hover] {
             border: 1px solid #fff;
             &:hover {
@@ -173,7 +146,7 @@
             }
         }
     }
-    .wrap12 {
+    .wrap-cj {
         a[data-hover] {
             border: 1px solid #000;
             &:hover {
@@ -182,7 +155,7 @@
             }
         }
     }
-    .wrap13 {
+    .wrap-blissoo {
         a[data-hover] {
             border: 1px solid #393939;
             &:hover {
@@ -191,12 +164,30 @@
             }
         }
     }
-    .wrap14 {
+    .wrap-imarketkorea {
         a[data-hover] {
             border: 1px solid #fff;
             &:hover {
                 background-color: #fff;
                 color: #003595;
+            }
+        }
+    }
+    .wrap-gradiant {
+        a[data-hover] {
+            &:hover {
+                border-color: #ff8500;
+                background-color: #ff8500;
+                color: #000;
+            }
+        }
+    }
+    .wrap-kia_worldwide {
+        a[data-hover] {
+            border: 1px solid #fff;
+            &:hover {
+                background-color: #fff;
+                color: #0b0d0e;
             }
         }
     }
@@ -216,25 +207,7 @@
                 }
             }
         }
-        .wrap1 {
-            a[data-hover] {
-                &:hover {
-                    background-color: transparent;
-                    border: 1px solid #fff;
-                    color: #fff;
-                }
-            }
-        }
-        .wrap3 {
-            a[data-hover] {
-                &:hover {
-                    background-color: transparent;
-                    border: 1px solid #fff;
-                    color: #fff;
-                }
-            }
-        }
-        .wrap5 {
+        .wrap-dalkomm {
             a[data-hover] {
                 &:hover {
                     background-color: transparent;
@@ -243,7 +216,7 @@
                 }
             }
         }
-        .wrap6 {
+        .wrap-baemin {
             a[data-hover] {
                 &:hover {
                     background-color: transparent;
@@ -252,16 +225,7 @@
                 }
             }
         }
-        .wrap7 {
-            a[data-hover] {
-                &:hover {
-                    background-color: transparent;
-                    border: 1px solid #fff;
-                    color: #fff;
-                }
-            }
-        }
-        .wrap8 {
+        .wrap-design-samsung {
             a[data-hover] {
                 &:hover {
                     background-color: transparent;
@@ -270,7 +234,7 @@
                 }
             }
         }
-        .wrap9 {
+        .wrap-devsisters {
             a[data-hover] {
                 &:hover {
                     background-color: transparent;
@@ -279,7 +243,7 @@
                 }
             }
         }
-        .wrap10 {
+        .wrap-toyota {
             a[data-hover] {
                 &:hover {
                     background-color: transparent;
@@ -288,7 +252,7 @@
                 }
             }
         }
-        .wrap11 {
+        .wrap-tmap {
             a[data-hover] {
                 &:hover {
                     background-color: transparent;
@@ -297,7 +261,7 @@
                 }
             }
         }
-        .wrap12 {
+        .wrap-cj {
             a[data-hover] {
                 &:hover {
                     background-color: transparent;
@@ -306,7 +270,7 @@
                 }
             }
         }
-        .wrap13 {
+        .wrap-blissoo {
             a[data-hover] {
                 &:hover {
                     background-color: transparent;
@@ -315,7 +279,16 @@
                 }
             }
         }
-        .wrap14 {
+        .wrap-imarketkorea {
+            a[data-hover] {
+                &:hover {
+                    background-color: transparent;
+                    border: 1px solid #fff;
+                    color: #fff;
+                }
+            }
+        }
+        .wrap-kia_worldwide {
             a[data-hover] {
                 &:hover {
                     background-color: transparent;

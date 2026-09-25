@@ -1,7 +1,61 @@
 .sc-project {
     .project-area {
         position: relative;
+        display: flex;
+        flex-direction: column;
         color: #000;
+    }
+    // 탭은 DOM 상 카드 앞(키보드 접근 순서), 화면에서는 프로젝트 영역 하단에 고정
+    .project-tab {
+        order: 1;
+        position: sticky;
+        bottom: 40px;
+        z-index: 50;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        height: 0;
+        .tab-list {
+            display: flex;
+            gap: 4px;
+            padding: 5px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            background-color: rgba(17, 17, 17, 0.7);
+            backdrop-filter: blur(10px);
+            transform: translateY(-100%);
+        }
+        .tab-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 26px;
+            border: 0;
+            border-radius: 50px;
+            background-color: transparent;
+            color: #fff;
+            font-family: $font-en4;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.5s, color 0.5s;
+            .count {
+                font-family: $font-en1;
+                font-size: 14px;
+                font-style: italic;
+                opacity: 0.6;
+            }
+            &[aria-selected='true'] {
+                background-color: #fff;
+                color: #000;
+            }
+            &.active {
+                cursor: none;
+            }
+            &:focus-visible {
+                outline: 2px solid #fff;
+                outline-offset: 2px;
+            }
+        }
     }
     .project-wrap {
         position: sticky;
@@ -27,97 +81,84 @@
             align-items: center;
             width: 40%;
         }
-        &.wrap1 {
-            background-color: #222;
-            color: #fff;
-            img {
-                width: 40vw;
-            }
-        }
-        &.wrap2 {
-            background-color: #fff;
-            img {
-                width: 40vw;
-            }
-        }
-        &.wrap3 {
-            color: #fff;
-            background-color: #ff6f62;
-            img {
-                width: 13vw;
-            }
-        }
-        &.wrap4 {
+        &.wrap-aesop {
             background-color: #f1f1e0;
             img {
                 width: 40vw;
             }
         }
-        &.wrap5 {
+        &.wrap-dalkomm {
             background-color: #eb5b29;
             img {
                 width: 30vw;
             }
         }
-        &.wrap6 {
+        &.wrap-baemin {
             background-color: #2ac1bc;
             color: #fff;
             img {
                 width: 40vw;
             }
         }
-        &.wrap7 {
-            color: #fff;
-            background-color: #00d465;
-            img {
-                width: 25vw;
-            }
-        }
-        &.wrap8 {
+        &.wrap-design-samsung {
             color: #000;
             background-color: #fff;
             img {
                 width: 30vw;
             }
         }
-        &.wrap9 {
+        &.wrap-devsisters {
             color: #fff;
             background-color: #232222;
             img {
                 width: 30vw;
             }
         }
-        &.wrap10 {
+        &.wrap-toyota {
             color: #222;
             background-color: #fff;
             img {
                 width: 20vw;
             }
         }
-        &.wrap11 {
+        &.wrap-tmap {
             color: #fff;
             background-color: #000;
             img {
                 width: 18vw;
             }
         }
-        &.wrap12{
+        &.wrap-cj{
             color: #000;
             background-color: #fff;
             img {
                 width: 25vw;
             }
         }
-        &.wrap13{
+        &.wrap-blissoo{
             color: #393939;
             background-color: #99bdd3;
             img {
                 width: 25vw;
             }
         }
-        &.wrap14{
+        &.wrap-imarketkorea{
             color: #fff;
             background-color: #003595;
+            img {
+                width: 25vw;
+            }
+        }
+        &.wrap-gradiant {
+            color: #000;
+            background-color: #e6e6ea;
+            img {
+                width: 30vw;
+            }
+        }
+        &.wrap-kia_worldwide {
+            color: #fff;
+            background-color: #0b0d0e;
             img {
                 width: 25vw;
             }
@@ -170,72 +211,62 @@
             .column-right {
                 width: 50%;
             }
-            &.wrap1 {
+            &.wrap-aesop {
                 img {
                     width: 40vw;
                 }
             }
-            &.wrap2 {
+            &.wrap-dalkomm {
+                img {
+                    width: 30vw;
+                }
+            }
+            &.wrap-baemin {
                 img {
                     width: 40vw;
                 }
             }
-            &.wrap3 {
+            &.wrap-design-samsung {
+                img {
+                    width: 30vw;
+                }
+            }
+            &.wrap-devsisters {
+                img {
+                    width: 30vw;
+                }
+            }
+            &.wrap-toyota {
                 img {
                     width: 20vw;
                 }
             }
-            &.wrap4 {
-                img {
-                    width: 40vw;
-                }
-            }
-            &.wrap5 {
-                img {
-                    width: 30vw;
-                }
-            }
-            &.wrap6 {
-                img {
-                    width: 40vw;
-                }
-            }
-            &.wrap7 {
-                img {
-                    width: 30vw;
-                }
-            }
-            &.wrap8 {
-                img {
-                    width: 30vw;
-                }
-            }
-            &.wrap9 {
-                img {
-                    width: 30vw;
-                }
-            }
-            &.wrap10 {
-                img {
-                    width: 20vw;
-                }
-            }
-            &.wrap11 {
+            &.wrap-tmap {
                 img {
                     width: 18vw;
                 }
             }
-            &.wrap12{
+            &.wrap-cj{
                 img {
                     width: 25vw;
                 }
             }
-            &.wrap13{
+            &.wrap-blissoo{
                 img {
                     width: 22vw;
                 }
             }
-            &.wrap14{
+            &.wrap-imarketkorea{
+                img {
+                    width: 30vw;
+                }
+            }
+            &.wrap-gradiant {
+                img {
+                    width: 40vw;
+                }
+            }
+            &.wrap-kia_worldwide {
                 img {
                     width: 30vw;
                 }
@@ -246,90 +277,102 @@
 
 @include mobile {
     .sc-project {
+        .project-tab {
+            bottom: 16px;
+            .tab-list {
+                padding: 4px;
+            }
+            .tab-btn {
+                gap: 6px;
+                padding: 8px 16px;
+                font-size: 13px;
+                .count {
+                    font-size: 12px;
+                }
+            }
+        }
         .project-wrap {
             display: flex;
             flex-direction: column;
             justify-content: center;
             .column-left {
                 width: 100%;
-                height: 50%;
+                height: 40%;
             }
             .column-right {
                 display: flex;
                 justify-content: flex-start;
                 align-items: flex-start;
                 width: 100%;
-                height: 50%;
+                height: 60%;
+                // 하단 고정 탭(높이 약 40px + bottom 16px)에 내용이 가리지 않도록 여백 확보
+                padding-bottom: 72px;
             }
             .project-tit {
-                font-size: 40px;
+                margin: 14px 0 16px;
+                font-size: 36px;
             }
-            &.wrap1 {
+            .desc {
+                font-size: 15px;
+                line-height: 20px;
+                word-break: keep-all;
+            }
+            &.wrap-aesop {
                 img {
                     width: 60vw;
                 }
             }
-            &.wrap2 {
-                img {
-                    width: 60vw;
-                }
-            }
-            &.wrap3 {
-                img {
-                    width: 24vw;
-                }
-            }
-            &.wrap4 {
-                img {
-                    width: 60vw;
-                }
-            }
-            &.wrap5 {
+            &.wrap-dalkomm {
                 img {
                     width: 30vw;
                 }
             }
-            &.wrap6 {
+            &.wrap-baemin {
                 img {
                     width: 60vw;
                 }
             }
-            &.wrap7 {
-                img {
-                    width: 40vw;
-                }
-            }
-            &.wrap8 {
+            &.wrap-design-samsung {
                 img {
                     width: 60vw;
                 }
             }
-            &.wrap9 {
+            &.wrap-devsisters {
                 img {
                     width: 60vw;
                 }
             }
-            &.wrap10 {
+            &.wrap-toyota {
                 img {
                     width: 35vw;
                 }
             }
-            &.wrap11 {
+            &.wrap-tmap {
                 img {
                     width: 27vw;
                 }
             }
-            &.wrap12{
+            &.wrap-cj{
                 img {
                     width: 40vw;
                 }
             }
-            &.wrap13{
+            &.wrap-blissoo{
                 img {
                     width: 30vw;
                 }
             }
-            &.wrap14{
+            &.wrap-imarketkorea{
+                img {
+                    width: 60vw;
+                }
+            }
+            &.wrap-gradiant {
+                img {
+                    width: 60vw;
+                }
+            }
+            &.wrap-kia_worldwide {
                 img {
                     width: 60vw;
                 }
