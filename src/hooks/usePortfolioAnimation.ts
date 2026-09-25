@@ -220,7 +220,9 @@ export function usePortfolioAnimation() {
     mm.add('all', () => {
       /**
        * text-motion
+       * 재실행 시(StrictMode 등) revert 후에도 남는 GSAP transform 캐시(zOrigin)를 먼저 비움
        */
+      gsap.set('.txt-motion', { clearProps: 'transform' });
       gsap.set('.txt-motion', {
         yPercent: 110,
         transformStyle: 'preserve-3d',
