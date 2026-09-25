@@ -8,11 +8,11 @@ import { projects, type ProjectCategory } from '../data/projects';
 
 const counts = projects.reduce(
   (acc, p) => ({ ...acc, [p.category]: acc[p.category] + 1 }),
-  { work: 0, personal: 0 } as Record<ProjectCategory, number>,
+  { renewal: 0, maintenance: 0, personal: 0 } as Record<ProjectCategory, number>,
 );
 
 export default function Project() {
-  const [tab, setTab] = useState<ProjectCategory>('work');
+  const [tab, setTab] = useState<ProjectCategory>('renewal');
   const areaRef = useRef<HTMLDivElement>(null);
   const prevTab = useRef(tab);
   const list = projects.filter((p) => p.category === tab);
@@ -45,6 +45,21 @@ export default function Project() {
           opacity: 1,
         });
       });
+
+      /**
+       * 프로젝트 영역이 끝나갈 때 하단 고정 탭을 사라지게 함
+       * (sticky 가 풀리며 섹션 경계에 붙은 채로 남는 게 어색해서)
+       */
+      gsap.fromTo(
+        '.project-tab',
+        { autoAlpha: 1, y: 0 },
+        {
+          autoAlpha: 0,
+          y: 20,
+          ease: 'none',
+          scrollTrigger: { trigger: area, start: 'bottom bottom+=200', end: 'bottom bottom-=20', scrub: true },
+        },
+      );
 
       // 탭 전환 시: 카드 수만큼 페이지 높이가 바뀌므로 전체 트리거 위치 재계산 후 첫 카드로 이동
       if (prevTab.current !== tab) {

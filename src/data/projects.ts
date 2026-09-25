@@ -17,17 +17,18 @@ export interface ProjectLink {
   href: string;
 }
 
-export type ProjectCategory = 'work' | 'personal';
+export type ProjectCategory = 'renewal' | 'maintenance' | 'personal';
 
 export const projectTabs: { id: ProjectCategory; label: string }[] = [
-  { id: 'work', label: 'WORK' },
+  { id: 'renewal', label: 'RENEWAL' },
+  { id: 'maintenance', label: 'MAINTENANCE' },
   { id: 'personal', label: 'PERSONAL' },
 ];
 
 export interface Project {
   /** 스타일 클래스(.wrap-{id})에 사용되는 고유 id */
   id: string;
-  /** WORK(실무) / PERSONAL(개인) 탭 분류 */
+  /** RENEWAL(구축) / MAINTENANCE(운영) / PERSONAL(개인) 탭 분류 */
   category: ProjectCategory;
   title: string;
   /** HTML 태그 사용 가능(<br/> 등). 배열로 나눠도 줄바꿈됨 */
@@ -84,7 +85,7 @@ export const projects: Project[] = [
   },
   {
     id: 'design-samsung',
-    category: 'work',
+    category: 'maintenance',
     title: 'Design Samsung',
     desc: '운영 및 신규 컨텐츠 페이지 퍼블리싱 작업',
     thumb: { src: samsungDesignLogo, alt: '디자인 삼성 로고', href: 'https://design.samsung.com/kr/' },
@@ -96,7 +97,7 @@ export const projects: Project[] = [
   },
   {
     id: 'devsisters',
-    category: 'work',
+    category: 'renewal',
     title: 'Devsisters',
     desc: '웹사이트 리뉴얼 및 서브페이지 작업',
     thumb: { src: devsistersLogo, alt: '데브시스터즈 로고', href: 'https://www.devsisters.com/' },
@@ -105,7 +106,7 @@ export const projects: Project[] = [
   },
   {
     id: 'toyota',
-    category: 'work',
+    category: 'maintenance',
     title: 'Toyota',
     desc: ['웹사이트 리뉴얼 및 페이지 운영', ' data seo 변환 기능 추가'],
     thumb: { src: toyotaLogo, alt: '토요타 로고', href: 'https://www.toyota.co.kr/' },
@@ -114,7 +115,7 @@ export const projects: Project[] = [
   },
   {
     id: 'tmap',
-    category: 'work',
+    category: 'renewal',
     title: 'Tmap Mobility',
     desc: ['웹사이트 리뉴얼 및 페이지 컴포넌트화 작업', ' 인터렉션 적용'],
     thumb: { src: tmapLogo, alt: '티맵모빌리티 로고', href: 'https://www.tmapmobility.com/' },
@@ -123,7 +124,7 @@ export const projects: Project[] = [
   },
   {
     id: 'cj',
-    category: 'work',
+    category: 'renewal',
     title: 'CJ Group',
     desc: ['웹사이트 리뉴얼, 웹접근성 준수, 인터렉션 적용', 'WEB AWARD KOREA 2024 <br/>UI/UX 혁신대상 수상'],
     thumb: { src: cjLogo, alt: 'cj 로고', href: 'https://www.cj.net/' },
@@ -132,7 +133,7 @@ export const projects: Project[] = [
   },
   {
     id: 'blissoo',
-    category: 'work',
+    category: 'renewal',
     title: 'BLISSOO',
     desc: '웹사이트 신규 제작 및 인터렉션 적용',
     thumb: { src: blissooLogo, alt: '블리수 로고', href: 'https://blissoo.co.kr/' },
@@ -141,7 +142,7 @@ export const projects: Project[] = [
   },
   {
     id: 'imarketkorea',
-    category: 'work',
+    category: 'renewal',
     title: 'IMarketKorea',
     desc: ['웹사이트 리뉴얼 및 인터렉션 적용', ' Sanity를 활용한 데이터 바인딩'],
     thumb: { src: imkLogo, alt: '아이마켓코리아 로고', href: 'https://www.imarketkorea.com/' },
@@ -150,7 +151,7 @@ export const projects: Project[] = [
   },
   {
     id: 'gradiant',
-    category: 'work',
+    category: 'renewal',
     title: 'gradiant',
     desc: ['웹사이트 리뉴얼 및 Three.js 활용한 인터렉션 적용', ' Sanity를 활용한 데이터 바인딩'],
     thumb: { src: gradiantLogo, alt: '그래디언트 로고', href: 'https://www.gradiant.co.kr/' },
@@ -159,7 +160,7 @@ export const projects: Project[] = [
   },
   {
     id: 'kia_worldwide',
-    category: 'work',
+    category: 'renewal',
     title: 'KIA WorldWide',
     desc: ['웹사이트 리뉴얼 및 Three.js, GSAP를 <br/>활용한 인터렉션 적용', '콘텐츠 페이지 프론트엔드 PL <br/>작업 일정 수립 및 관리'],
     thumb: { src: kiaLogo, alt: '기아 로고', href: 'https://worldwide.kia.com/ko' },

@@ -282,12 +282,16 @@
             .tab-list {
                 padding: 4px;
             }
+            // 탭 3개가 좁은 화면(320px)에도 한 줄에 들어가도록
+            .tab-list {
+                gap: 2px;
+            }
             .tab-btn {
-                gap: 6px;
-                padding: 8px 16px;
-                font-size: 13px;
+                gap: 4px;
+                padding: 8px 10px;
+                font-size: 11px;
                 .count {
-                    font-size: 12px;
+                    font-size: 10px;
                 }
             }
         }
