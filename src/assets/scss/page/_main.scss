@@ -177,7 +177,26 @@
             }
             .desc-txt {
                 font-size: 18px;
-                line-height: 24px;    
+                line-height: 24px;
+                word-break: keep-all;
+            }
+            .career {
+                display: flex;
+                align-items: baseline;
+                gap: 16px;
+                margin-top: 30px;
+                padding-top: 20px;
+                border-top: 1px solid rgba(0, 0, 0, 0.15);
+                font-size: 16px;
+                .career-tit {
+                    font-family: $font-en4;
+                    font-size: 14px;
+                }
+                .period {
+                    margin-left: 10px;
+                    font-family: $font-en2;
+                    opacity: 0.6;
+                }
             }
         }
     }
@@ -323,6 +342,9 @@
             .desc-box {
                 max-width: 320px;
                 text-align: center;
+                .career {
+                    justify-content: center;
+                }
             }
         }
         .caption-area {
@@ -399,7 +421,8 @@
             }
             .desc-txt {
                 font-size: 18px;
-                line-height: 24px;   
+                line-height: 24px;
+                word-break: keep-all;
             }
         }
         .column-right {

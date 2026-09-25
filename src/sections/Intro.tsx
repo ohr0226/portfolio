@@ -35,10 +35,16 @@ export default function Intro() {
           <div className="desc-box">
             <strong className="desc-tit">There's more than meets the eye.</strong>
             <p className="desc-txt">
-              시각적으로 아름답고 화려한 디자인만을 만드는 것이 전부가 아닌,
-              최적의 사용자 경험을 제공하는 것을 목표로 하는
-              개발자가 되겠습니다.
+              보기 좋은 화면 너머, 사용자가 편하게 쓰는 경험까지 설계합니다.
+              디자이너의 시선으로 디자인 의도를 정확히 구현하고,
+              성능과 접근성까지 챙기는 프론트엔드 개발을 해왔습니다.
             </p>
+            <dl className="career">
+              <dt className="career-tit">NOW</dt>
+              <dd className="career-txt">
+                디자인피버 재직 중<span className="period">2022.11 ~ 현재</span>
+              </dd>
+            </dl>
           </div>
         </div>
       </div>
