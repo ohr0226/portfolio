@@ -14,13 +14,13 @@ export default function Footer() {
           <span className="pc">EMAIL</span>
           <i className="mobile"><img src={mailIcon} alt="이메일주소:tmvkfmxk00@naver.com" /></i>
         </a>
-        <a href="https://github.com/ohr0226" target="_blank" data-hover>
+        <a href="https://github.com/ohr0226" target="_blank" rel="noopener noreferrer" data-hover>
           <span className="pc">GITHUB</span>
           <i className="mobile"><img src={githubIcon} alt="깃허브주소:https://github.com/ohr0226" /></i>
         </a>
       </div>
       <div className="copy-area">
-        <small>© 2024. All rights reserved.</small>
+        <small>© {new Date().getFullYear()}. All rights reserved.</small>
       </div>
     </footer>
   );

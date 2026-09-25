@@ -16,7 +16,7 @@ export default function ProjectCard({ project, index, total }: Props) {
     <div className={`project-wrap wrap-${id}`}>
       {shadow && <div className="bg-shadow"></div>}
       <div className="column-left">
-        <a href={thumb.href} className="thumb-box" target="_blank" data-img>
+        <a href={thumb.href} className="thumb-box" target="_blank" rel="noopener noreferrer" data-img>
           <img src={thumb.src} alt={thumb.alt} />
         </a>
       </div>
@@ -38,7 +38,7 @@ export default function ProjectCard({ project, index, total }: Props) {
           </p>
           <div className="links">
             {links.map((link) => (
-              <a key={link.href} href={link.href} className={`link-${link.type}`} target="_blank" data-hover>
+              <a key={link.href} href={link.href} className={`link-${link.type}`} target="_blank" rel="noopener noreferrer" data-hover>
                 {link.label}
               </a>
             ))}
