@@ -10,6 +10,8 @@ import blissooLogo from '../assets/images/blissoo_logo.png';
 import imkLogo from '../assets/images/imk-logo.png';
 import gradiantLogo from '../assets/images/gradiant_logo.png'
 import kiaLogo from '../assets/images/kia-logo.png';
+import kaosLogo from '../assets/images/kaos-logo.svg';
+import lexusLogo from '../assets/images/lexus-logo.svg';
 
 export interface ProjectLink {
   type: 'page' | 'review';
@@ -159,6 +161,19 @@ export const projects: Project[] = [
     skills: ['Three.js','SCSS', 'React', 'Next.js', 'Lottie json', 'Sanity'],
   },
   {
+    id: 'kaos',
+    category: 'renewal',
+    title: 'KAOS',
+    desc: [
+      '카오스재단 웹사이트 신규 구축',
+      'GSAP를 활용한 인터렉션 적용',
+      '백엔드 API 연동 및 <br/>Sanity를 활용한 데이터 바인딩',
+    ],
+    thumb: { src: kaosLogo, alt: '카오스재단 로고', href: 'https://ikaos.org/' },
+    links: [page('https://ikaos.org/')],
+    skills: ['React', 'Vite', 'Tailwind CSS', 'GSAP', 'Sanity'],
+  },
+  {
     id: 'kia_worldwide',
     category: 'renewal',
     title: 'KIA WorldWide',
@@ -166,5 +181,18 @@ export const projects: Project[] = [
     thumb: { src: kiaLogo, alt: '기아 로고', href: 'https://worldwide.kia.com/ko' },
     links: [page('https://worldwide.kia.com/ko')],
     skills: ['Three.js','SCSS', 'React', 'vite'],
+  },
+  {
+    id: 'lexus',
+    category: 'renewal',
+    title: 'LEXUS Korea',
+    desc: [
+      '웹사이트 리뉴얼 및 전 차종 모델 페이지 구축',
+      'GNB · LNB 개발',
+      'PHP 백엔드 연동을 위한 <br/>내비게이션 데이터 구조 설계 및 전달',
+    ],
+    thumb: { src: lexusLogo, alt: '렉서스 로고', href: 'https://www.lexus.co.kr/' },
+    links: [page('https://www.lexus.co.kr/')],
+    skills: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'GSAP', 'Zustand'],
   },
 ];

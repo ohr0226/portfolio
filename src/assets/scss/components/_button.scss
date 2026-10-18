@@ -191,6 +191,24 @@
             }
         }
     }
+    .wrap-kaos {
+        a[data-hover] {
+            border: 1px solid #000;
+            &:hover {
+                background-color: #000;
+                color: #fcf2f2;
+            }
+        }
+    }
+    .wrap-lexus {
+        a[data-hover] {
+            border: 1px solid #fff;
+            &:hover {
+                background-color: #fff;
+                color: #385071;
+            }
+        }
+    }
 }
 
 @include laptop {
@@ -289,6 +307,24 @@
             }
         }
         .wrap-kia_worldwide {
+            a[data-hover] {
+                &:hover {
+                    background-color: transparent;
+                    border: 1px solid #fff;
+                    color: #fff;
+                }
+            }
+        }
+        .wrap-kaos {
+            a[data-hover] {
+                &:hover {
+                    background-color: transparent;
+                    border: 1px solid #000;
+                    color: #000;
+                }
+            }
+        }
+        .wrap-lexus {
             a[data-hover] {
                 &:hover {
                     background-color: transparent;

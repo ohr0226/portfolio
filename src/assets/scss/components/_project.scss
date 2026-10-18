@@ -163,6 +163,20 @@
                 width: 25vw;
             }
         }
+        &.wrap-kaos {
+            color: #000;
+            background-color: #fcf2f2;
+            img {
+                width: 20vw;
+            }
+        }
+        &.wrap-lexus {
+            color: #fff;
+            background-color: #385071;
+            img {
+                width: 25vw;
+            }
+        }
     }
     .info-box {
         display: flex;
@@ -271,6 +285,16 @@
                     width: 30vw;
                 }
             }
+            &.wrap-kaos {
+                img {
+                    width: 25vw;
+                }
+            }
+            &.wrap-lexus {
+                img {
+                    width: 35vw;
+                }
+            }
         }    
     }
 }
@@ -377,6 +401,16 @@
                 }
             }
             &.wrap-kia_worldwide {
+                img {
+                    width: 60vw;
+                }
+            }
+            &.wrap-kaos {
+                img {
+                    width: 45vw;
+                }
+            }
+            &.wrap-lexus {
                 img {
                     width: 60vw;
                 }
