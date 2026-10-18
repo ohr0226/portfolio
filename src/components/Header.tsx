@@ -30,9 +30,9 @@ export default function Header() {
         </h1>
       </div>
       <div className="contact-area">
-        {/* 경력기술서 PDF — 어디서든 바로 열 수 있도록 헤더에 고정 */}
-        <a href={`${import.meta.env.BASE_URL}career.pdf`} className="link-career" target="_blank" rel="noopener noreferrer" data-hover>
-          <span className="text">CAREER</span>
+        {/* 이력서 PDF 다운로드 — 어디서든 바로 받을 수 있도록 헤더에 고정 */}
+        <a href={`${import.meta.env.BASE_URL}resume.pdf`} className="link-career" download="오혜림_이력서.pdf" data-hover>
+          <span className="text">RESUME</span>
           <span className="tag">PDF</span>
         </a>
         <a href="mailto:tmvkfmxk00@naver.com" className="link-mail" data-hover>
