@@ -5,6 +5,7 @@ import { useGSAP } from '@gsap/react';
 import ProjectCard from '../components/ProjectCard';
 import ProjectTabs, { PANEL_ID, tabId } from '../components/ProjectTabs';
 import { projects, type ProjectCategory } from '../data/projects';
+import { lastViewed } from '../hooks/useHashRoute';
 
 const counts = projects.reduce(
   (acc, p) => ({ ...acc, [p.category]: acc[p.category] + 1 }),
@@ -12,7 +13,10 @@ const counts = projects.reduce(
 );
 
 export default function Project() {
-  const [tab, setTab] = useState<ProjectCategory>('renewal');
+  // 상세에서 돌아온 경우 보던 프로젝트의 탭으로 시작
+  const [tab, setTab] = useState<ProjectCategory>(
+    () => projects.find((p) => p.id === lastViewed.id)?.category ?? 'renewal',
+  );
   const areaRef = useRef<HTMLDivElement>(null);
   const prevTab = useRef(tab);
   const list = projects.filter((p) => p.category === tab);
@@ -66,6 +70,17 @@ export default function Project() {
         prevTab.current = tab;
         ScrollTrigger.refresh();
         window.scrollTo({ top: area.getBoundingClientRect().top + window.scrollY, behavior: 'smooth' });
+      }
+
+      // 상세에서 돌아온 경우: 카드가 한 화면씩 쌓이는 구조라 (순번 × 화면 높이) 위치로 바로 이동
+      const returnIndex = list.findIndex((p) => p.id === lastViewed.id);
+      lastViewed.id = null;
+      if (returnIndex >= 0) {
+        requestAnimationFrame(() => {
+          ScrollTrigger.refresh();
+          const top = area.getBoundingClientRect().top + window.scrollY + returnIndex * window.innerHeight;
+          window.scrollTo({ top, behavior: 'instant' });
+        });
       }
 
       return () => window.removeEventListener('resize', onResize);

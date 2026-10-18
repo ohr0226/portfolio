@@ -31,24 +31,6 @@ function hover(target: HTMLElement, enter: () => void, leave: () => void): Clean
   };
 }
 
-/**
- * [data-hover] 등 hover 대상에 mouseenter/mouseleave 를 이벤트 위임으로 처리
- * → 탭 전환 등으로 나중에 렌더링된 요소에도 동작
- */
-function delegateHover(selector: string, enter: (el: HTMLElement) => void, leave: (el: HTMLElement) => void): Cleanup {
-  const handle = (e: MouseEvent, fn: (el: HTMLElement) => void) => {
-    const el = (e.target as Element).closest<HTMLElement>(selector);
-    // 같은 요소 내부(자식 간) 이동은 무시
-    if (el && !el.contains(e.relatedTarget as Node | null)) fn(el);
-  };
-  const offOver = on(document, 'mouseover', (e) => handle(e, enter));
-  const offOut = on(document, 'mouseout', (e) => handle(e, leave));
-  return () => {
-    offOver();
-    offOut();
-  };
-}
-
 /** jQuery .offset().top 대체 */
 const offsetTop = (el: HTMLElement | null) => (el ? el.getBoundingClientRect().top + window.scrollY : 0);
 
@@ -150,7 +132,7 @@ const loadFonts = () =>
     new Promise((resolve) => setTimeout(resolve, 3000)),
   ]).then(() => undefined);
 
-export function usePortfolioAnimation() {
+export function usePortfolioAnimation({ withLoading }: { withLoading: boolean }) {
   useGSAP(() => {
     /**
      * React 는 window load 이후에 마운트될 수 있어 ScrollTrigger 의 자동 refresh 가 누락됨
@@ -175,40 +157,12 @@ export function usePortfolioAnimation() {
 
     // large
     mm.add('(min-width: 1024px)', () => {
-      const cursor = $('.cursor');
       const cleanups: Cleanup[] = [];
 
       /**
        *  header hide
        */
       cleanups.push(headerToggle(() => offsetTop($('.sc-contact')) - 200));
-
-      /**
-       * mouse event
-       */
-      cleanups.push(
-        on(window, 'mousemove', (e) => {
-          gsap.to('.cursor', { x: e.clientX, y: e.clientY, duration: 0.2 });
-        }),
-      );
-
-      const cursorHover = (selector: string, cursorClass: string) => {
-        cleanups.push(
-          delegateHover(
-            selector,
-            (el) => {
-              cursor?.classList.add(cursorClass);
-              el.classList.add('active');
-            },
-            (el) => {
-              cursor?.classList.remove(cursorClass);
-              el.classList.remove('active');
-            },
-          ),
-        );
-      };
-      cursorHover('[data-hover]', 'cursor-over');
-      cursorHover('[data-img]', 'img-over');
 
       /**
        *  img hover event
@@ -331,22 +285,27 @@ export function usePortfolioAnimation() {
 
       /**
        *  loading ani
+       *  상세 페이지에서 돌아온 경우엔 로딩 없이 바로 인트로 텍스트만 노출
        */
-      const loadingAni = gsap
-        .timeline({ paused: true, onComplete: () => void introAni.play() })
-        .addLabel('a')
-        // 마지막 글자(O/H/R)의 실제 위치만큼 이동 → 브라우저(Safari)별 줄 높이 반올림 차이에도 정렬 유지
-        .to('.loading .list1', { y: lastItemY, duration: 4 }, 'a')
-        .to('.loading .list2', { y: lastItemY, duration: 5 }, 'a')
-        .to('.loading .list3', { y: lastItemY, duration: 3 }, 'a')
-        .to('.loading', { yPercent: -100, display: 'none' }, 'a+=5');
+      if (withLoading) {
+        const loadingAni = gsap
+          .timeline({ paused: true, onComplete: () => void introAni.play() })
+          .addLabel('a')
+          // 마지막 글자(O/H/R)의 실제 위치만큼 이동 → 브라우저(Safari)별 줄 높이 반올림 차이에도 정렬 유지
+          .to('.loading .list1', { y: lastItemY, duration: 4 }, 'a')
+          .to('.loading .list2', { y: lastItemY, duration: 5 }, 'a')
+          .to('.loading .list3', { y: lastItemY, duration: 3 }, 'a')
+          .to('.loading', { yPercent: -100, display: 'none' }, 'a+=5');
 
-      // 폰트가 모두 준비된 뒤 로딩 애니메이션 시작 (그 전엔 대체 폰트가 보이지 않도록 숨김)
-      gsap.set('.loading .num-wrap', { autoAlpha: 0 });
-      fontsLoaded.then(() => {
-        gsap.set('.loading .num-wrap', { autoAlpha: 1 });
-        loadingAni.play();
-      });
+        // 폰트가 모두 준비된 뒤 로딩 애니메이션 시작 (그 전엔 대체 폰트가 보이지 않도록 숨김)
+        gsap.set('.loading .num-wrap', { autoAlpha: 0 });
+        fontsLoaded.then(() => {
+          gsap.set('.loading .num-wrap', { autoAlpha: 1 });
+          loadingAni.play();
+        });
+      } else {
+        fontsLoaded.then(() => void introAni.play());
+      }
 
       /**
        * Trigger event

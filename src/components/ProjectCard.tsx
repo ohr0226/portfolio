@@ -1,6 +1,8 @@
 import { Fragment } from 'react';
 import parse from 'html-react-parser';
 import type { Project } from '../data/projects';
+import { projectDetails } from '../data/projectDetails';
+import { projectPath } from '../hooks/useHashRoute';
 
 interface Props {
   project: Project;
@@ -37,6 +39,11 @@ export default function ProjectCard({ project, index, total }: Props) {
             ))}
           </p>
           <div className="links">
+            {projectDetails[id] && (
+              <a href={projectPath(id)} className="link-detail" data-hover>
+                View Detail
+              </a>
+            )}
             {links.map((link) => (
               <a key={link.href} href={link.href} className={`link-${link.type}`} target="_blank" rel="noopener noreferrer" data-hover>
                 {link.label}
