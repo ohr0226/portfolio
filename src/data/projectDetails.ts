@@ -10,7 +10,7 @@ export interface ProjectDetail {
   type: string;
   /** 맡은 역할 */
   role: string;
-  /** 프로젝트 한 줄 소개 */
+  /** 프로젝트 한 줄 소개 (HTML 가능, PC·태블릿 줄바꿈은 <br class="br-pc" />) */
   summary: string;
   /** 상세 히어로 영역 색상 (메인 카드 배경색과 동일하게 맞춤) */
   theme: { bg: string; color: string };
@@ -22,7 +22,7 @@ export const projectDetails: Record<string, ProjectDetail> = {
     period: '2026.05 - 2026.10',
     type: 'Renewal',
     role: 'Frontend Developer',
-    summary: '렉서스코리아 공식 웹사이트 리뉴얼 프로젝트로, GNB·LNB와 전 차종 모델 페이지를 맡았습니다.',
+    summary: '렉서스코리아 공식 웹사이트 리뉴얼 프로젝트로, <br class="br-pc" />GNB·LNB와 전 차종 모델 페이지를 맡았습니다.',
     theme: { bg: '#385071', color: '#fff' },
     sections: [
       {
@@ -55,7 +55,7 @@ export const projectDetails: Record<string, ProjectDetail> = {
     period: '2025.05 - 2026.04',
     type: 'Renewal',
     role: 'Frontend PL (Contents)',
-    summary: '기아 글로벌 브랜드 사이트 리뉴얼 프로젝트로, 콘텐츠 페이지 프론트엔드 PL을 맡았습니다.',
+    summary: '기아 글로벌 브랜드 사이트 리뉴얼 프로젝트로, <br class="br-pc" />콘텐츠 페이지 프론트엔드 PL을 맡았습니다.',
     theme: { bg: '#0b0d0e', color: '#fff' },
     sections: [
       {
@@ -83,7 +83,7 @@ export const projectDetails: Record<string, ProjectDetail> = {
     period: '2025.05 - 2025.07',
     type: 'Renewal',
     role: 'Frontend Developer',
-    summary: '기초과학 대중화를 이끄는 카오스재단의 공식 웹사이트를 새로 구축했습니다.',
+    summary: '기초과학 대중화를 이끄는 카오스재단의 <br class="br-pc" />공식 웹사이트를 새로 구축했습니다.',
     theme: { bg: '#fcf2f2', color: '#000' },
     sections: [
       {
@@ -107,7 +107,7 @@ export const projectDetails: Record<string, ProjectDetail> = {
     period: '2024.11 - 2025.07',
     type: 'Renewal',
     role: 'Frontend Developer',
-    summary: '그래디언트 공식 웹사이트 리뉴얼 프로젝트로, 메인 인터랙션과 주요 서브 페이지를 맡았습니다.',
+    summary: '그래디언트 공식 웹사이트 리뉴얼 프로젝트로, <br class="br-pc" />메인 인터랙션과 주요 서브 페이지를 맡았습니다.',
     theme: { bg: '#e6e6ea', color: '#000' },
     sections: [
       {
@@ -138,7 +138,7 @@ export const projectDetails: Record<string, ProjectDetail> = {
     period: '2024.07 - 2025.05',
     type: 'Renewal',
     role: 'Frontend Developer',
-    summary: '아이마켓코리아 공식 웹사이트 리뉴얼 프로젝트로, 주요 페이지와 공통 UI를 맡았습니다.',
+    summary: '아이마켓코리아 공식 웹사이트 리뉴얼 프로젝트로, <br class="br-pc" />주요 페이지와 공통 UI를 맡았습니다.',
     theme: { bg: '#003595', color: '#fff' },
     sections: [
       {
@@ -165,7 +165,7 @@ export const projectDetails: Record<string, ProjectDetail> = {
     period: '2024.01 - 2024.03',
     type: 'New Build',
     role: 'Frontend Developer',
-    summary: '블리수 공식 웹사이트를 새로 구축했고, 프론트엔드 개발을 주도했습니다.',
+    summary: '블리수 공식 웹사이트를 새로 구축했고, <br class="br-pc" />프론트엔드 개발을 주도했습니다.',
     theme: { bg: '#99bdd3', color: '#393939' },
     sections: [
       {
@@ -190,7 +190,7 @@ export const projectDetails: Record<string, ProjectDetail> = {
     period: '2023.07 - 2024.01 / 2025.04 - 2025.09',
     type: 'Renewal',
     role: 'Frontend Developer',
-    summary: 'CJ그룹 공식 웹사이트 리뉴얼(WEB AWARD KOREA 2024 UI/UX 혁신대상)과 해외법인 사이트 구축에 참여했습니다.',
+    summary: 'CJ그룹 공식 웹사이트 리뉴얼(WEB AWARD KOREA 2024 UI/UX 혁신대상)과 <br class="br-pc" />해외법인 사이트 구축에 참여했습니다.',
     theme: { bg: '#fff', color: '#000' },
     sections: [
       {
@@ -219,7 +219,7 @@ export const projectDetails: Record<string, ProjectDetail> = {
     period: '2023.04 - 2023.06',
     type: 'Renewal',
     role: 'Frontend Developer',
-    summary: '티맵모빌리티 공식 웹사이트 리뉴얼 프로젝트로, 공통 컴포넌트 설계와 주요 페이지를 맡았습니다.',
+    summary: '티맵모빌리티 공식 웹사이트 리뉴얼 프로젝트로, <br class="br-pc" />공통 컴포넌트 설계와 주요 페이지를 맡았습니다.',
     theme: { bg: '#000', color: '#fff' },
     sections: [
       {
@@ -246,7 +246,7 @@ export const projectDetails: Record<string, ProjectDetail> = {
     period: '2022.11 - 2023.03',
     type: 'Renewal',
     role: 'Frontend Developer',
-    summary: '데브시스터즈 공식 웹사이트 리뉴얼 프로젝트로, 게임 · 스튜디오 소개 페이지를 맡았습니다.',
+    summary: '데브시스터즈 공식 웹사이트 리뉴얼 프로젝트로, <br class="br-pc" />게임 · 스튜디오 소개 페이지를 맡았습니다.',
     theme: { bg: '#232222', color: '#fff' },
     sections: [
       {
@@ -266,7 +266,7 @@ export const projectDetails: Record<string, ProjectDetail> = {
     period: '2023.03 - 2026.09',
     type: 'Renewal + Maintenance',
     role: 'Frontend Developer',
-    summary: '토요타코리아 공식 웹사이트를 2023년 리뉴얼로 구축하고, 이후 3년간 운영했습니다.',
+    summary: '토요타코리아 공식 웹사이트를 2023년 리뉴얼로 구축하고, <br class="br-pc" />이후 3년간 운영했습니다.',
     theme: { bg: '#fff', color: '#222' },
     sections: [
       {
@@ -301,7 +301,7 @@ export const projectDetails: Record<string, ProjectDetail> = {
     period: '2022.11 - 2026.04',
     type: 'Maintenance + Renewal',
     role: 'Frontend Developer',
-    summary: '삼성전자 디자인 사이트를 3년 6개월간 운영했고, 2025년에는 메인 리뉴얼을 했습니다.',
+    summary: '삼성전자 디자인 사이트를 3년 6개월간 운영했고, <br class="br-pc" />2025년에는 메인 리뉴얼을 했습니다.',
     theme: { bg: '#fff', color: '#000' },
     sections: [
       {

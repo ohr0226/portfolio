@@ -1,5 +1,6 @@
 import { useEffect, useRef, type CSSProperties } from 'react';
 import gsap from 'gsap';
+import parse from 'html-react-parser';
 import { useGSAP } from '@gsap/react';
 import { projects, projectTabs } from '../data/projects';
 import { projectDetails } from '../data/projectDetails';
@@ -79,7 +80,7 @@ export default function ProjectDetail({ id }: Props) {
             {project.title}
           </h2>
           <p className="hero-summary" data-reveal>
-            {detail.summary}
+            {parse(detail.summary)}
           </p>
         </div>
       </section>

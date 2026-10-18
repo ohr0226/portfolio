@@ -1,3 +1,10 @@
+// PC · 태블릿에서만 줄바꿈 (모바일은 화면 폭에 맞춰 자연스럽게 흐르도록)
+.br-pc {
+  @include mobile {
+    display: none;
+  }
+}
+
 .blind {
   position: absolute;
   width: 1px;
