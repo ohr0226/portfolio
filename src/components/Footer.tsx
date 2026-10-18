@@ -1,6 +1,7 @@
 import callIcon from '../assets/images/call.svg';
 import mailIcon from '../assets/images/mail.svg';
 import githubIcon from '../assets/images/github.png';
+import resumeIcon from '../assets/images/resume.svg';
 
 export default function Footer() {
   return (
@@ -17,6 +18,11 @@ export default function Footer() {
         <a href="https://github.com/ohr0226" target="_blank" rel="noopener noreferrer" data-hover>
           <span className="pc">GITHUB</span>
           <i className="mobile"><img src={githubIcon} alt="깃허브주소:https://github.com/ohr0226" /></i>
+        </a>
+        {/* public/career.pdf — 경력기술서 (새 탭에서 열기) */}
+        <a href={`${import.meta.env.BASE_URL}career.pdf`} target="_blank" rel="noopener noreferrer" data-hover>
+          <span className="pc">RESUME</span>
+          <i className="mobile"><img src={resumeIcon} alt="경력기술서 PDF" /></i>
         </a>
       </div>
       <div className="copy-area">
