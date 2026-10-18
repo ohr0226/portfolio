@@ -134,7 +134,7 @@ export const projects: Project[] = [
     desc: [
       '웹사이트 리뉴얼, 웹접근성 준수, 인터렉션 적용',
       'WEB AWARD KOREA 2024 <br/>UI/UX 혁신대상 수상',
-      '2025 국·영·일 다국어 리뉴얼 및 <br/>백엔드 API 연동',
+      '2025 CJ America·Japan 해외법인 <br/>사이트 구축 및 백엔드 API 연동',
     ],
     thumb: { src: cjLogo, alt: 'cj 로고', href: 'https://www.cj.net/' },
     links: [page('https://www.cj.net/')],
