@@ -89,7 +89,10 @@ export const projects: Project[] = [
     id: 'design-samsung',
     category: 'maintenance',
     title: 'Design Samsung',
-    desc: '운영 및 신규 컨텐츠 페이지 퍼블리싱 작업',
+    desc: [
+      '국·영문 신규 콘텐츠 페이지 퍼블리싱 및 운영',
+      '2025 메인 리뉴얼, About Us·Explore <br/>페이지 구축 및 헤더 검색 기능 개발',
+    ],
     thumb: { src: samsungDesignLogo, alt: '디자인 삼성 로고', href: 'https://design.samsung.com/kr/' },
     links: [
       page('https://design.samsung.com/kr/', 'Go Site Main Page'),
@@ -128,7 +131,11 @@ export const projects: Project[] = [
     id: 'cj',
     category: 'renewal',
     title: 'CJ Group',
-    desc: ['웹사이트 리뉴얼, 웹접근성 준수, 인터렉션 적용', 'WEB AWARD KOREA 2024 <br/>UI/UX 혁신대상 수상'],
+    desc: [
+      '웹사이트 리뉴얼, 웹접근성 준수, 인터렉션 적용',
+      'WEB AWARD KOREA 2024 <br/>UI/UX 혁신대상 수상',
+      '2025 국·영·일 다국어 리뉴얼 및 <br/>백엔드 API 연동',
+    ],
     thumb: { src: cjLogo, alt: 'cj 로고', href: 'https://www.cj.net/' },
     links: [page('https://www.cj.net/')],
     skills: ['SCSS', 'ejs', 'canvas', 'GSAP'],
