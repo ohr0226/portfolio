@@ -263,10 +263,10 @@ export const projectDetails: Record<string, ProjectDetail> = {
     ],
   },
   toyota: {
-    period: '2023.03 - 2026.09',
+    period: '2023.03 - 현재',
     type: 'Renewal + Maintenance',
     role: 'Frontend Developer',
-    summary: '토요타코리아 공식 웹사이트를 2023년 리뉴얼로 구축하고, <br class="br-pc" />이후 3년간 운영했습니다.',
+    summary: '토요타코리아 공식 웹사이트를 2023년 리뉴얼로 구축하고, <br class="br-pc" />이후 현재까지 운영하고 있습니다.',
     theme: { bg: '#fff', color: '#222' },
     sections: [
       {
