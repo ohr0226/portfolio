@@ -30,6 +30,11 @@ export default function Header() {
         </h1>
       </div>
       <div className="contact-area">
+        {/* 경력기술서 PDF — 어디서든 바로 열 수 있도록 헤더에 고정 */}
+        <a href={`${import.meta.env.BASE_URL}career.pdf`} className="link-career" target="_blank" rel="noopener noreferrer" data-hover>
+          <span className="text">CAREER</span>
+          <span className="tag">PDF</span>
+        </a>
         <a href="mailto:tmvkfmxk00@naver.com" className="link-mail" data-hover>
           <span className="text">CONTACT</span>
         </a>

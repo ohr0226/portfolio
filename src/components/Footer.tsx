@@ -20,8 +20,8 @@ export default function Footer() {
           <i className="mobile"><img src={githubIcon} alt="깃허브주소:https://github.com/ohr0226" /></i>
         </a>
         {/* public/career.pdf — 경력기술서 (새 탭에서 열기) */}
-        <a href={`${import.meta.env.BASE_URL}career.pdf`} target="_blank" rel="noopener noreferrer" data-hover>
-          <span className="pc">RESUME</span>
+        <a href={`${import.meta.env.BASE_URL}career.pdf`} className="link-career" target="_blank" rel="noopener noreferrer" data-hover>
+          <span className="pc">CAREER PDF ↗</span>
           <i className="mobile"><img src={resumeIcon} alt="경력기술서 PDF" /></i>
         </a>
       </div>
